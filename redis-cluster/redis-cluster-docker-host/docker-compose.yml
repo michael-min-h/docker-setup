@@ -1,0 +1,68 @@
+version: '3.4'
+
+x-image:
+  &redis-image
+  redis:5.0.7-alpine3.11
+
+x-command:
+  &redis-command
+  redis-server /etc/redis/redis.conf
+
+x-netmode:
+  &redis-netmode
+  host
+
+services:
+  redis-6379:
+    image: *redis-image
+    container_name: redis-6379
+    command: *redis-command
+    volumes:
+      - ./6379/data:/data
+      - ./6379/conf/redis.conf:/etc/redis/redis.conf
+    network_mode: *redis-netmode
+
+  redis-6380:
+    image: *redis-image
+    container_name: redis-6380
+    command: *redis-command
+    volumes:
+      - ./6380/data:/data
+      - ./6380/conf/redis.conf:/etc/redis/redis.conf
+    network_mode: *redis-netmode
+
+  redis-6381:
+    image: *redis-image
+    container_name: redis-6381
+    command: *redis-command
+    volumes:
+      - ./6381/data:/data
+      - ./6381/conf/redis.conf:/etc/redis/redis.conf
+    network_mode: *redis-netmode
+
+  redis-6382:
+    image: *redis-image
+    container_name: redis-6382
+    command: *redis-command
+    volumes:
+      - ./6382/data:/data
+      - ./6382/conf/redis.conf:/etc/redis/redis.conf
+    network_mode: *redis-netmode
+
+  redis-6383:
+    image: *redis-image
+    container_name: redis-6383
+    command: *redis-command
+    volumes:
+      - ./6383/data:/data
+      - ./6383/conf/redis.conf:/etc/redis/redis.conf
+    network_mode: *redis-netmode
+
+  redis-6384:
+    image: *redis-image
+    container_name: redis-6384
+    command: *redis-command
+    volumes:
+      - ./6384/data:/data
+      - ./6384/conf/redis.conf:/etc/redis/redis.conf
+    network_mode: *redis-netmode

@@ -1,0 +1,2 @@
+#!/bin/sh
+docker exec redis-6379 /bin/sh -c "echo yes | redis-cli -a 123456 --cluster-replicas 1 --cluster create 127.0.0.1:6379 127.0.0.1:6380 127.0.0.1:6381 127.0.0.1:6382 127.0.0.1:6383 127.0.0.1:6384"
