@@ -1,0 +1,82 @@
+version: '3.4'
+
+x-image:
+  &redis-image
+  redis:5.0.7-alpine3.11
+
+x-command:
+  &redis-command
+  redis-server /etc/redis/redis.conf
+
+services:
+  redis-n1:
+    image: *redis-image
+    container_name: redis-n1
+    command: *redis-command
+    volumes:
+      - ./n1/data:/data
+      - ./n1/conf/redis.conf:/etc/redis/redis.conf
+    networks: 
+      redis.net:
+        ipv4_address: 172.16.239.2
+
+  redis-n2:
+    image: *redis-image
+    container_name: redis-n2
+    command: *redis-command
+    volumes:
+      - ./n2/data:/data
+      - ./n2/conf/redis.conf:/etc/redis/redis.conf
+    networks: 
+      redis.net:
+        ipv4_address: 172.16.239.3
+
+  redis-n3:
+    image: *redis-image
+    container_name: redis-n3
+    command: *redis-command
+    volumes:
+      - ./n3/data:/data
+      - ./n3/conf/redis.conf:/etc/redis/redis.conf
+    networks: 
+      redis.net:
+        ipv4_address: 172.16.239.4
+
+  redis-n4:
+    image: *redis-image
+    container_name: redis-n4
+    command: *redis-command
+    volumes:
+      - ./n4/data:/data
+      - ./n4/conf/redis.conf:/etc/redis/redis.conf
+    networks: 
+      redis.net:
+        ipv4_address: 172.16.239.5
+
+  redis-n5:
+    image: *redis-image
+    container_name: redis-n5
+    command: *redis-command
+    volumes:
+      - ./n5/data:/data
+      - ./n5/conf/redis.conf:/etc/redis/redis.conf
+    networks: 
+      redis.net:
+        ipv4_address: 172.16.239.6
+
+  redis-n6:
+    image: *redis-image
+    container_name: redis-n6
+    command: *redis-command
+    volumes:
+      - ./n6/data:/data
+      - ./n6/conf/redis.conf:/etc/redis/redis.conf
+    networks: 
+      redis.net:
+        ipv4_address: 172.16.239.7
+
+networks:
+  redis.net:
+    ipam:
+      config:
+        - subnet: "172.16.239.0/24"
